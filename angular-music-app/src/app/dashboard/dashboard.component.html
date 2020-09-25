@@ -1,0 +1,58 @@
+<div *ngIf="authservice.currentUserValue==null">
+ <mat-card  class="example-card" style="background-color: rgba(0, 0, 0, 0.548);">
+     <mat-head style="margin: 10%;">
+        <mat-card-title style="margin: auto;text-align: center;font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;">Bienvenido</mat-card-title>
+     </mat-head>
+     <mat-content style="margin: 10%;">
+        <div style="margin: auto;text-align: center;">Login for a personalised experience</div>
+     </mat-content>
+
+ </mat-card>   
+
+</div>
+<div *ngIf="authservice.currentUserValue!=null">
+   <mat-card  class="example-card" style="background-color: rgba(0, 0, 0, 0.548);margin-top: 4%;margin-bottom: 4%;">
+       <mat-head style="margin: 10px;">
+          <mat-card-title style="margin: auto;text-align: center;font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;">{{user.userName}}</mat-card-title>
+       </mat-head>
+       <mat-content style="margin: 10%;">
+          <div style="margin: auto;text-align: center;">Your Preferences are as follows</div>
+       </mat-content>
+  
+   </mat-card>   
+  
+
+<div style="column-count: 1;">
+
+        
+       
+           <div style="padding-left: 150px;padding-right: 150px;padding-top: 20px;">
+               <mat-card style="background-color: rgba(0, 0, 0, 0.384);columns: 5;padding: 10px;"*ngFor="let iterator of playlist" >
+                   <mat-card-header style="margin: 20px;">
+                       <mat-card-title style="padding: 7px;margin: 6px;text-align: left;">{{iterator.name}}</mat-card-title>
+                       <mat-card-subtitle style="padding: 7px;margin: 6px;text-align: left;">{{iterator.id}}</mat-card-subtitle>
+                   </mat-card-header><br>
+                   <img style="padding: 2%;" mat-card-image src={{iterator.images[0].url}} alt="Playlist Photo"  height="5%">
+                   <mat-card-content>
+                      <div style="padding: 40px; font-size: 20px;">
+                          <div style="font-variant: small-caps;font-weight: 600;">
+                           Tracks :   
+                          </div>
+                              <br>{{iterator.trackCount}}
+                          
+                      </div>
+                   </mat-card-content>
+                   <mat-card-actions>
+                       <div *ngIf="authservice.currentUserValue!=null">
+                       <button mat-fab color="black" (click)="delfav(iterator.href)" >
+                           <mat-icon>favorite</mat-icon>
+                         </button>
+                       </div>
+                     </mat-card-actions>
+               </mat-card> <br>
+           </div>
+       
+   
+
+</div>
+</div>

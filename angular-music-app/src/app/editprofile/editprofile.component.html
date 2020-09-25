@@ -1,0 +1,32 @@
+
+<mat-card class="example-card">
+    <mat-card-header>
+      <mat-card-title style="margin: auto;text-align: left;">Edit Profile</mat-card-title>
+      <mat-card-subtitle style="margin: auto;">Email : {{edituser.emailId}}</mat-card-subtitle>
+    </mat-card-header>
+
+    <mat-card-content>
+      <form class="example-form" #regForm='ngForm'>
+        <table class="example-full-width" cellspacing="0">
+            
+         <tr>
+                <td><mat-form-field class="example-full-width">
+                  <input matInput placeholder="Name" [(ngModel)]="edituser.userName" #name="ngModel" name="name" required>
+                </mat-form-field></td>
+          </tr>
+         
+          <tr>
+          <td><mat-form-field class="example-full-width">
+            <input matInput placeholder="Password" [(ngModel)]="edituser.password" #password="ngModel" name="password" required>
+          </mat-form-field></td>
+        </tr>
+    </table>
+    </form>
+    <div class="alert alert-success" *ngIf="msg !=undefined"> {{msg}}</div>
+    <div class="alert alert-danger" *ngIf="errorMsg != undefined" [innerHTML]="errorMsg">{{errorMsg}}</div>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button (click)="submitchanges()" color="primary">Submit Changes</button>
+    </mat-card-actions>
+  </mat-card>
+

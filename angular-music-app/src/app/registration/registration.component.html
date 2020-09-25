@@ -1,0 +1,36 @@
+<mat-card class="example-card" style="background-color: rgba(0, 0, 0, 0.507);">
+    <mat-card-header>
+      <mat-card-title style="margin: auto;">Registeration</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <form class="example-form" #regForm='ngForm'>
+        <table class="example-full-width" cellspacing="0">
+         <tr>
+                <td><mat-form-field class="example-full-width">
+                  <input matInput placeholder="Name" [(ngModel)]="user.userName"type="text" name="password" required>
+                </mat-form-field></td>
+          </tr>
+          <tr>
+            <td>
+              <mat-form-field class="example-full-width">
+              <mat-label>Enter your email</mat-label>
+              <input matInput placeholder="musiclistener@xyz.com" [(ngModel)]="user.emailId" [formControl]="email" name="useremail" required>
+              <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+              </mat-form-field>
+            </td>
+          </tr>
+          <tr>
+          <td><mat-form-field class="example-full-width">
+            <input matInput placeholder="Password" [(ngModel)]="user.password"type="password" name="password" required>
+          </mat-form-field></td>
+        </tr>
+    </table>
+    </form>
+    <div class="alert alert-success" *ngIf="msg !=undefined"> {{msg}}</div>
+    <div class="alert alert-danger" *ngIf="errorMsg != undefined" [innerHTML]="errorMsg">{{errorMsg}}</div>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button  (click)="regUser()" color="black">Register</button>
+    </mat-card-actions>
+  </mat-card>
+

@@ -1,0 +1,37 @@
+<div class="bgimg">
+
+<div class="example-container">
+    <mat-toolbar color="dark" class="example-toolbar">
+      <button mat-icon-button (click)="snav.toggle()"><mat-icon>menu</mat-icon></button>
+      <h1 class="example-app-name">My-Music</h1>
+    </mat-toolbar>
+  
+    <mat-sidenav-container class="example-sidenav-container"
+                           [style.marginTop.px]="mobileQuery.matches ? 56 : 0">
+      <mat-sidenav #snav [mode]="mobileQuery.matches ? 'over' : 'side'"
+                   [fixedInViewport]="mobileQuery.matches" fixedTopGap="56">
+        <mat-nav-list>
+            <a *ngFor="let item of menuItems" mat-list-item [routerLink]="'/'+item"> {{item | titlecase}} </a>
+            <div *ngIf='authenticationService.currentUserValue==null'>
+            <a mat-list-item (click)=login()>Login</a>
+          </div>
+          <div *ngIf="authenticationService.currentUserValue!=null">
+            <a mat-list-item (click)=bio()>Bio</a>
+          </div>
+          <div *ngIf="authenticationService.currentUserValue!=null">
+            <a mat-list-item (click)=edituser()>Edit Profile</a>
+          </div>
+          <div *ngIf="authenticationService.currentUserValue!=null">
+            <a mat-list-item (click)=logout()>Logout</a>
+          </div>
+
+         
+        </mat-nav-list>
+      </mat-sidenav>
+  
+      <mat-sidenav-content style="background-image: url(../assets/clef.jpg);background-size:cover;">
+        <router-outlet></router-outlet>
+      </mat-sidenav-content>
+    </mat-sidenav-container>
+</div>
+</div>
